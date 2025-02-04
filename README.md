@@ -32,3 +32,10 @@ Flask web server provides:
 - Uses BLE for communication.
 - Freebot Peripheral: Collects sensor data and sends it to the BLE Central.
 - BLE Central: Receives data and forwards it to the Raspberry Pi.
+
+## Collaborators
+- Jules Verbessem (r0957436)
+- Mathias Van den Cruijce (r0785409)
+- Stijn Hendrix (r0797253)
+- Yurryt Vermeire (r0786618)
+- Arthur Spillebeen (r0762529)
