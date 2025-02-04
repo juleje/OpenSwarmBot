@@ -1,0 +1,31 @@
+import "http"
+import "json"
+import "math"
+
+option task = {name: "alert", every: 4s}
+
+endpoint = "http://127.0.0.1:5000/alert"
+
+data =
+    from(bucket: "robot")
+        |> range(start: -10s)
+        |> filter(fn: (r) => r["topic"] == "III2024/05/sense")
+        |> filter(fn: (r) => r["_field"] == "voltage")
+        |> filter(fn: (r) => r["_measurement"] == "mqtt_consumer")
+        |> last()
+
+voltage =
+    data
+        |> findRecord(fn: (key) => true, idx: 0)
+
+absvolt = voltage._value / 1000.0
+
+percentage = math.round(x: (absvolt - 0.9) / (2.8 - 0.9) * 100.0)
+
+postData = {"group": 5, "voltage": percentage}
+
+http.post(
+    url: endpoint,
+    headers: {"Content-Type": "application/json"},
+    data: json.encode(v: postData),
+)
