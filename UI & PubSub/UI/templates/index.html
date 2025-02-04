@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot controls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%; /* Adjust the width of the container */
+            max-width: 800px; /* Limit the maximum width of the container */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three evenly spaced columns */
+            gap: 10px;
+        }
+
+        .button-group {
+            text-align: center; /* Center the button groups */
+            padding: 10px; /* Add padding for spacing */
+        }
+
+        /* Button groups with different background colors */
+        .button-group-1 {
+            background-color: #007bff; /* Blue */
+            grid-column: span 3; /* Span all three columns */
+        }
+
+        .button-group-3 {
+            background-color: #dc3545; /* Red */
+            grid-column: span 3; /* Span two columns */
+        }
+
+        .button-group-4 {
+            background-color: #ffc107; /* Yellow */
+            grid-column: span 3; /* Span all three columns */
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff; /* White background color for buttons */
+            color: #000; /* Black text color */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e0e0e0; /* Light gray background color on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Robot Controls</h1>
+        <form method="POST" action="/move">
+            <div class="button-group button-group-1">
+                <button type="submit" name="direction" value="forward">▲</button>
+                <div class="button-group button-group-horizontal">
+                    <button type="submit" name="direction" value="left">◄</button>
+                    <button type="button" style="visibility: hidden; pointer-events: none">►</button>
+                    <button type="submit" name="direction" value="right">►</button>
+                </div>
+                <button type="submit" name="direction" value="backward">▼</button>
+            </div>
+            <div class="button-group button-group-3">
+                <button type="submit" name="direction" value="side45">Side 45</button>
+                <button type="submit" name="direction" value="side135">Side 135</button>
+                <button type="submit" name="direction" value="side225">Side 225</button>
+                <button type="submit" name="direction" value="side315">Side 315</button>
+            </div>
+            <div class="button-group button-group-4">
+                <button type="submit" name="direction" value="clockwise">Clockwise</button>
+                <button type="submit" name="direction" value="counterclockwise">Counterclockwise</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
